@@ -1,0 +1,837 @@
+/* =========================================================
+   Lab Assignment 5: Online Food Ordering Webpage
+   Each section is labelled with the CSS concept it shows.
+   ========================================================= */
+
+/* ---------- Reset and base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d2d2d;
+  background-color: #fffaf4;
+  line-height: 1.6;
+}
+
+img {
+  display: block;               /* DISPLAY: block removes inline gap under images */
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 70px 0;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  text-align: center;
+  color: #c0392b;
+}
+
+.section-sub {
+  text-align: center;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+.light {
+  color: #fff;
+}
+
+/* ---------- Buttons: DISPLAY inline-block ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border-color: #fff;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background-color: #fff;
+  color: #e74c3c;
+}
+
+.btn-lg {
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  margin: 8px 6px;
+}
+
+/* =========================================================
+   1. HEADER AND NAVIGATION
+   Flexbox + display properties + sticky positioning
+   ========================================================= */
+.site-header {
+  position: sticky;             /* POSITION: sticky header */
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-inner {
+  display: flex;                /* DISPLAY: flex */
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #e74c3c;
+  color: #fff;
+  font-weight: 700;
+}
+
+.logo-text {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.logo-text em {
+  color: #e74c3c;
+  font-style: normal;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;              /* DISPLAY: inline */
+}
+
+.nav-links a {
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #e74c3c;
+  border-bottom-color: #e74c3c;
+}
+
+.search-box {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  overflow: hidden;             /* OVERFLOW: hidden keeps rounded corners */
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 8px 14px;
+  width: 170px;
+}
+
+.search-box button {
+  border: none;
+  background-color: #f6f6f6;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+/* Mobile menu toggle (pure CSS) */
+.nav-toggle {
+  display: none;                /* DISPLAY: none hides the checkbox */
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* =========================================================
+   2. BANNER
+   background-image, size, position, repeat + positioning + overflow
+   ========================================================= */
+.banner {
+  position: relative;
+  height: 88vh;
+  min-height: 480px;
+  background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600");
+  background-size: cover;       /* BACKGROUND properties */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #333;       /* fallback colour */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;             /* OVERFLOW: hidden clips the big deco text */
+}
+
+.banner-overlay {
+  position: absolute;           /* POSITION: absolute overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(192, 57, 43, 0.45));
+}
+
+.banner-content {
+  position: relative;           /* sits above overlay */
+  z-index: 2;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.banner-sub {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #ffd6a5;
+}
+
+.banner h1 {
+  font-size: 4rem;
+  margin: 10px 0;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+
+.banner-deco {
+  position: absolute;
+  bottom: -60px;
+  right: -40px;
+  font-size: 14rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.07);
+  z-index: 1;
+}
+
+/* =========================================================
+   3. RESTAURANT INFO
+   CSS BOX MODEL: content, padding, border, margin
+   ========================================================= */
+.info-section {
+  padding: 0;
+}
+
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -50px;            /* MARGIN: negative margin pulls cards over banner */
+  position: relative;
+  z-index: 5;
+}
+
+.info-box {
+  width: 210px;                 /* content width */
+  padding: 22px 18px;           /* PADDING */
+  border: 2px solid #f1e3d3;    /* BORDER */
+  margin: 10px;                 /* MARGIN */
+  background-color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.info-box.highlight {
+  border: 2px dashed #e74c3c;
+  background-color: #fff3f1;
+}
+
+.info-icon {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.info-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.info-box p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px;
+  font-size: 0.75rem;
+  background-color: #ffe8d6;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   4. FOOD CATEGORIES
+   Flexbox: flex-direction, justify-content, align-items, flex-wrap, gap
+   ========================================================= */
+.category-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;       /* emoji above text */
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.category-card:hover {
+  background-color: #e74c3c;
+  color: #fff;
+  transform: scale(1.07);
+}
+
+.cat-emoji {
+  font-size: 3rem;
+}
+
+.category-card p {
+  font-weight: 600;
+}
+
+/* =========================================================
+   5. FOOD MENU
+   CSS Grid: grid-template-columns, grid-template-rows, gap,
+   grid-column, grid-row
+   ========================================================= */
+.menu {
+  background-color: #fff;
+}
+
+.menu-grid {
+  display: grid;                /* DISPLAY: grid */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-auto-rows: auto;
+  gap: 24px;
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fffaf4;
+  border-radius: 14px;
+  overflow: hidden;             /* OVERFLOW: hidden clips image zoom */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  transition: 0.3s;
+}
+
+.menu-card:hover {
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+}
+
+.menu-card.featured {
+  grid-column: 1 / 3;           /* spans 2 columns */
+  grid-row: 1 / 3;              /* spans 2 rows */
+}
+
+.menu-card.wide {
+  grid-column: span 2;
+}
+
+.menu-img {
+  height: 180px;
+  overflow: hidden;             /* image section overflow */
+}
+
+.featured .menu-img {
+  height: 340px;
+}
+
+.menu-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.menu-card:hover .menu-img img {
+  transform: scale(1.1);
+}
+
+.menu-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.menu-body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.badge-inline {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: #f39c12;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+
+.desc {
+  font-size: 0.88rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+/* OVERFLOW: hidden with ellipsis for short descriptions */
+.desc-clip {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* OVERFLOW: scroll for the long featured description */
+.desc-scroll {
+  height: 90px;
+  overflow-y: scroll;
+  padding-right: 6px;
+}
+
+.menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #c0392b;
+}
+
+/* OVERFLOW: auto for horizontally scrolling menu container */
+.strip-title {
+  margin: 40px 0 12px;
+}
+
+.quick-strip {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.quick-item {
+  flex: 0 0 180px;
+  padding: 18px;
+  text-align: center;
+  background-color: #ffe8d6;
+  border-radius: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   6. SPECIAL OFFERS
+   position: relative (parent) + absolute (badges)
+   ========================================================= */
+.offers {
+  background-color: #2c1a12;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 2px, transparent 2px);
+  background-size: 22px 22px;   /* small tile */
+  background-repeat: repeat;    /* BACKGROUND: repeat pattern */
+}
+
+.offer-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.offer-card {
+  width: 320px;
+  background-color: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 18px;
+}
+
+.offer-img {
+  position: relative;           /* POSITION: relative parent */
+  height: 210px;
+  overflow: hidden;
+}
+
+.offer-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.offer-badge {
+  position: absolute;           /* POSITION: absolute badge */
+  top: 14px;
+  left: 14px;
+  background-color: #e74c3c;
+  color: #fff;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.offer-ribbon {
+  position: absolute;
+  bottom: 18px;
+  right: -36px;
+  width: 150px;
+  text-align: center;
+  background-color: #f1c40f;
+  color: #333;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 0;
+  transform: rotate(-35deg);
+}
+
+.offer-card h3 {
+  margin-top: 14px;
+}
+
+.offer-card s {
+  color: #999;
+}
+
+.offer-card strong {
+  color: #c0392b;
+  font-size: 1.2rem;
+}
+
+/* Fixed floating cart button */
+.cart-fab {
+  position: fixed;              /* POSITION: fixed */
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  background-color: #27ae60;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 40px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+
+.cart-fab:hover {
+  background-color: #1e8449;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  background-color: #e74c3c;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   7. CHEF'S SPECIAL / NEWS
+   float, clear and clearfix
+   ========================================================= */
+.chef-box {
+  background-color: #fff;
+  border: 1px solid #f1e3d3;
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 30px;
+}
+
+.chef-box h3 {
+  color: #c0392b;
+  margin-bottom: 10px;
+}
+
+.chef-box p {
+  margin-bottom: 10px;
+}
+
+.float-left {
+  float: left;                  /* FLOAT */
+  width: 300px;
+  height: 220px;
+  object-fit: cover;
+  margin: 0 24px 10px 0;
+  border-radius: 12px;
+}
+
+.float-right {
+  float: right;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  margin: 0 0 10px 24px;
+  border-radius: 12px;
+}
+
+/* CLEARFIX: parent fully contains floated children */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.after-float {
+  clear: both;                  /* CLEAR */
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* =========================================================
+   8. FOOD GALLERY
+   CSS Grid + borders + border-radius + hover effects
+   ========================================================= */
+.gallery {
+  background-color: #fff;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 16px;
+}
+
+.g-item {
+  overflow: hidden;
+  border: 4px solid #ffe8d6;    /* BORDER */
+  border-radius: 16px;          /* BORDER-RADIUS */
+  position: relative;
+}
+
+.g-tall {
+  grid-row: span 2;
+}
+
+.g-wide {
+  grid-column: span 2;
+}
+
+.g-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s, filter 0.5s;
+}
+
+.g-item:hover {
+  border-color: #e74c3c;
+}
+
+.g-item:hover img {
+  transform: scale(1.12) rotate(1deg);
+  filter: brightness(0.85);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background-color: #1b1b1b;
+  color: #bbb;
+  padding: 24px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hidden-note {
+  display: none;                /* DISPLAY: none */
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .search-box input {
+    width: 120px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;              /* hidden until hamburger is clicked */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-toggle:checked ~ .main-nav {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .banner h1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-card.featured,
+  .menu-card.wide {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .featured .menu-img {
+    height: 220px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .g-tall,
+  .g-wide {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .float-left,
+  .float-right {
+    float: none;
+    width: 100%;
+    margin: 0 0 14px 0;
+  }
+
+  .banner h1 {
+    font-size: 2.2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .category-card {
+    width: 120px;
+    height: 120px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
